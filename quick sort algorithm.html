@@ -1,0 +1,40 @@
+//inefficient version but the right idea
+<script>
+//we have an unsorted array
+var arrayToSort = [1, 6, 3, 9, 2, 4, 7, 8, 5];
+//let's pick a pivot element in our case it'll be last element
+var pivot = arrayToSort[arrayToSort.length-1];
+console.log(pivot);
+
+//partition an array in 2 halves not including pivot element
+//now we do 2 empty lists/arrays and populate left with numbers < than pivot
+//and the other one we populate with numbers > than pivot
+
+//function for bubble sort:
+function bubbleSort(array){
+  for(k=0; k<array.length; k++){
+    if (array[k] > array[k+1]){
+      var temp = array[k+1];
+      array[k+1] = array[k];
+      array[k] = temp;
+    }
+  }
+  return array;
+}
+//create 2 arrays for numbers lower than pivot and higher than pivot
+var leftPortion = [];
+var rightPortion = [];
+for (let n=0; n < arrayToSort.length; n++){
+    if (arrayToSort[n] <= pivot){
+        leftPortion.push(arrayToSort[n]);
+    }else {
+        rightPortion.push(arrayToSort[n]);
+    }
+}
+
+console.log(bubbleSort(leftPortion));
+console.log(bubbleSort(rightPortion));
+//at the end we concatenate 2 arrays into one and that is our sorted algorithm
+console.log(bubbleSort(leftPortion).concat(bubbleSort(rightPortion)) )
+
+</script>
